@@ -1,0 +1,1 @@
+InstantClick.init();

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>WeiXiaochen&#39;s blog</title>
+	<meta name="keywords" content=""/>
+	<meta name="description" content=""/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1""/>
+	
+        <meta name="keywords" content="" />
+    
+	
+		
+			
+<link rel="stylesheet" href="/css/highlight.css">
+
+		
+			
+<link rel="stylesheet" href="/css/xc.css">
+
+		
+	
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body>
+	<header>
+		<nav>
+			
+				<a href="/">首页</a> 
+			
+				<a href="/archives">归档</a> 
+			
+				<a href="/about">关于</a> 
+			
+				<a href="/link">友链</a> 
+			
+		</div>
+	</header>
+	<main>
+		<article>
+	
+	
+		
+		
+		<div>
+			<img src="https://cdn.jsdelivr.net/gh/wxc0914/image/a3625c26bc8735174100f6d487763b06.png" alt="avatar"/>
+			<div>
+				<div>
+					WeiXiaochen
+				</div>
+				<div>
+					2021年04月05日
+				</div>
+			</div>
+			
+				
+					<a class="btn" href="/categories/Java/">
+						Java
+					</a>
+				
+			
+		</div>
+		<h1>
+			多线程
+		</h1>
+		<div>
+			<h4 id="进程、线程"><a href="#进程、线程" class="headerlink" title="进程、线程"></a>进程、线程</h4><p>进程是一次程序的执行过程、是系统程序运行的基本单位。线程是比进程更小的执行单位，与进程不同的是，多个线程共享进程的堆和方法区资源，但是每个线程有自己的程序计数器 、虚拟机栈、本地方法栈。</p>
+<p>进程五状：创建、就绪、执行、阻塞、终止</p>
+<p>处理机调度：高级调度、中级调度、低级调度</p>
+<p>进程调度（低级调度）： 按照一定策略选择就绪进程，占用cpu执行。 </p>
+<p>批处理系统</p>
+<ul>
+<li>剥夺式：<ul>
+<li>最短剩余时间优先（SRTN）</li>
+<li>最高响应比优先（HSRF）</li>
+</ul>
+</li>
+<li>非剥夺方：<ul>
+<li>先来先服务（FCFS）</li>
+<li>短作业优先（SJF）</li>
+</ul>
+</li>
+</ul>
+<p>交互式系统</p>
+<ul>
+<li>时间片轮转</li>
+<li>优先级调度</li>
+<li>多级反馈队列</li>
+</ul>
+<p>产生死锁的四个必要条件：</p>
+<ul>
+<li><p>互斥</p>
+</li>
+<li><p>请求和保持</p>
+</li>
+<li><p>不剥夺</p>
+</li>
+<li><p>循环等待</p>
+</li>
+</ul>
+<p>产生死锁的原因</p>
+<ul>
+<li>竞争不可抢占资源</li>
+<li>竞争可消耗资源</li>
+<li>进程推进顺序不当</li>
+</ul>
+<p>解决死锁的基本方法：</p>
+<ul>
+<li>破坏请求和保持条件</li>
+<li>破坏不可抢占条件</li>
+<li>破坏循环等待条件</li>
+</ul>
+<p>避免死锁的算法：</p>
+<ul>
+<li>线性资源分配法</li>
+<li>系统安全状态法</li>
+<li>银行家算法<ul>
+<li>可利用资源向量Available</li>
+<li>最大需求矩阵Max</li>
+<li>分配矩阵Allocation</li>
+<li>需求矩阵Need</li>
+</ul>
+</li>
+</ul>
+<h4 id="sleep-、wait-的区别"><a href="#sleep-、wait-的区别" class="headerlink" title="sleep()、wait()的区别"></a>sleep()、wait()的区别</h4><ul>
+<li><code>sleep()</code>没有释放锁，而<code>wait()</code>释放了锁</li>
+<li><code>wait()</code>通常被用于线程间交互/通信，<code>sleep()</code>通常用于暂停执行。</li>
+<li><code>wait()</code>被调用后，线程不会自动苏醒，需要别的线程调用同一个对象上的<code>notify()</code>或者<code>notifyAll()</code>。<code>sleep()</code>执行完成后，线程会自动苏醒。或者可以使用<code>wait（long timeout）</code>超时后线程会自动苏醒。</li>
+</ul>
+<h4 id="synchronized"><a href="#synchronized" class="headerlink" title="synchronized"></a>synchronized</h4><p>用于保证被它修饰的方法或者代码块在任意时刻只能有一个线程执行。</p>
+<p>自旋锁、适应性自旋锁、锁消除、锁粗话、锁偏向、轻量级锁</p>
+<h4 id="CAS"><a href="#CAS" class="headerlink" title="CAS"></a>CAS</h4><h4 id="Atomic"><a href="#Atomic" class="headerlink" title="Atomic"></a>Atomic</h4><p>单例模式</p>
+<p>懒汉式</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance = <span class="keyword">null</span>;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (instance == <span class="keyword">null</span>) instance = <span class="keyword">new</span> Singleton();</span><br><span class="line">    	<span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>线程安全的懒汉式</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">static</span> Singleton instance = <span class="keyword">null</span>;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (instance == <span class="keyword">null</span>) &#123;</span><br><span class="line">        	<span class="keyword">synchronized</span>(Singleton.class) &#123;</span><br><span class="line">                <span class="keyword">if</span> (instance == <span class="keyword">null</span>) instance = <span class="keyword">new</span> Singleton();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    	<span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p>饿汉式</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance = <span class="keyword">new</span> Singleton();</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+		</div>
+	
+</article>
+
+<div class="pagination">
+	
+		<a href="/page/17/">< 上一篇：反射和注解</a>
+	
+	
+		<a href="/page/19/">下一篇: 异常处理 ></a>
+	
+</div>
+	</main>
+	<footer></footer>
+	
+        
+            
+<script src="https://cdn.bootcdn.net/ajax/libs/instantclick/3.1.0/instantclick.min.js"></script>
+
+        
+            
+<script src="/js/xc.js"></script>
+
+        
+    
+</body>
+</html>

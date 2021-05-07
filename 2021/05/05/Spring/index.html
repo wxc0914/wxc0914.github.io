@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>WeiXiaochen&#39;s blog</title>
+	<meta name="keywords" content=""/>
+	<meta name="description" content=""/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1""/>
+	
+        <meta name="keywords" content="" />
+    
+	
+		
+			
+<link rel="stylesheet" href="/css/highlight.css">
+
+		
+			
+<link rel="stylesheet" href="/css/xc.css">
+
+		
+	
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body>
+	<header>
+		<nav>
+			
+				<a href="/">首页</a> 
+			
+				<a href="/archives">归档</a> 
+			
+				<a href="/about">关于</a> 
+			
+				<a href="/link">友链</a> 
+			
+		</div>
+	</header>
+	<main>
+		<article>
+    <div>
+        <img src="https://cdn.jsdelivr.net/gh/wxc0914/image/a3625c26bc8735174100f6d487763b06.png" alt="avatar"/>
+        <div>
+            <div>
+                WeiXiaochen
+            </div>
+            <div>
+                2021年05月05日
+            </div>
+        </div>
+        
+            
+                <a class="btn" href="/categories/Spring/">
+                    Spring
+                </a>
+            
+        
+    </div>
+    <h1>
+        Spring
+    </h1>
+    <div>
+        <h2 id="Spring-简介"><a href="#Spring-简介" class="headerlink" title="Spring 简介"></a>Spring 简介</h2><p>Spring是一个轻量级的Java Web开发框架，以<code>IoC</code>（Inverse of Control，控制反转）和<code>AOP</code>（Aspect Oriented Programming，面向切面编程为内核）为内核。该框架采用分层架构，根据不同的功能被划分成了多个模块，如 Core、Bean、Context、AOP 和 Web 等。 </p>
+<p><img src="../../_media/image/1616070771871.png" alt="spring_structure" title=":size=60%"></p>
+<h2 id="Spring-IoC"><a href="#Spring-IoC" class="headerlink" title="Spring IoC"></a>Spring IoC</h2><p>IoC（控制反转）是指在程序开发中，实例的创建不再由调用者管理，而是由 Spring 容器创建。Spring 提供了两种 IoC 容器，分别为 <code>BeanFactory</code> 和 <code>ApplicationContext</code>。</p>
+<h4 id="BeanFactory"><a href="#BeanFactory" class="headerlink" title="BeanFactory"></a>BeanFactory</h4><p><code>BeanFactory</code>是一个管理<code>Bean</code>的工厂，它主要负责初始化各种<code>Bean</code>，并调用它们的生命周期方法。</p>
+<p><code>BeanFactory</code>是最基础的<code>IoC</code>容器，它由<code>org.springframework.beans.factory.BeanFactory</code>接口定义。该接口有很多的实现类，其中最常见的是<code>org.springframework.beans.factory.xml.XmlBeanFactory</code>。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BeanFactory beanFactory = <span class="keyword">new</span> XmlBeanFactory(<span class="keyword">new</span> FileSystemResource(<span class="string">&quot;D://applicationContext.xml&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+<h4 id="ApplicationContext"><a href="#ApplicationContext" class="headerlink" title="ApplicationContext"></a>ApplicationContext</h4><p><code>ApplicationContext</code>是<code>BeanFactory</code>的子接口，也被称为应用上下文。</p>
+<p><code>ApplicationContext</code>由<code>org.springframework.context.ApplicationContext</code>接口定义，该接口有两个常用的实现类：</p>
+<p><strong>1）ClassPathXmlApplicationContext</strong></p>
+<p>该类从<code>ClassPath</code>中寻找指定的<code>XML</code>配置文件，找到并装载完成<code>ApplicationContext</code>的实例化工作。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ApplicationContext applicationContext = <span class="keyword">new</span> ClassPathXmlApplicationContext(String congfigLocation);</span><br></pre></td></tr></table></figure>
+
+<p><strong>2）FileSystemXmlApplicationContext</strong></p>
+<p>该类从指定的文件系统路径中寻找指定的XML配置文件，找到并装载完成ApplicationContext的实例化工作。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ApplicationContext applicationContext = <span class="keyword">new</span> FileSystemXmlApplication(String congfigLocation)</span><br></pre></td></tr></table></figure>
+
+<p>注意：两者的区别在于<code>ApplicationContext</code>在初始化的时候，就会把所有的<code>Bean</code>实例化，而<code>BeanFactory</code>是在调用<code>getBean()</code>的时候才进行<code>Bean</code>的实例化。因此，<code>BeanFactory</code>占用的系统资源较少。</p>
+<h4 id="Spring-Bean的实例化"><a href="#Spring-Bean的实例化" class="headerlink" title="Spring Bean的实例化"></a>Spring Bean的实例化</h4><p>实例化Bean有三种方式：构造器实例化、静态工厂方式实例化和实例化工厂方式。</p>
+<p>getBean源码分析：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// getBean有多个重载方法，内部实际上是调用doGetBean来获取bean实例</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Object <span class="title">getBean</span><span class="params">(String name)</span> <span class="keyword">throws</span> BeansException </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.doGetBean(name, (Class)<span class="keyword">null</span>, (Object[])<span class="keyword">null</span>, <span class="keyword">false</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>doGetBean源码分析：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">protected</span> &lt;T&gt; <span class="function">T <span class="title">doGetBean</span><span class="params">(String name, <span class="meta">@Nullable</span> Class&lt;T&gt; requiredType, <span class="meta">@Nullable</span> Object[] args, <span class="keyword">boolean</span> typeCheckOnly)</span> <span class="keyword">throws</span> BeansException </span>&#123;</span><br><span class="line">    <span class="comment">// 通过name获取beanName</span></span><br><span class="line">    String beanName = <span class="keyword">this</span>.transformedBeanName(name);</span><br><span class="line">    <span class="comment">// 从缓存中获取单例bean</span></span><br><span class="line">    Object sharedInstance = <span class="keyword">this</span>.getSingleton(beanName);</span><br><span class="line">	</span><br><span class="line">    <span class="keyword">if</span> (sharedInstance != <span class="keyword">null</span> &amp;&amp; args == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="comment">// BeanFactory采用懒加载，所以会根据args取匹配合适的构造方法构造bean实例</span></span><br><span class="line">        bean = <span class="keyword">this</span>.getObjectForBeanInstance(sharedInstance, name, beanName, (RootBeanDefinition)<span class="keyword">null</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123; </span><br><span class="line">        <span class="comment">// sharedInstance为空，到父容器中查找bean</span></span><br><span class="line">        BeanFactory parentBeanFactory = <span class="keyword">this</span>.getParentBeanFactory();</span><br><span class="line">        <span class="keyword">if</span> (parentBeanFactory != <span class="keyword">null</span> &amp;&amp; !<span class="keyword">this</span>.containsBeanDefinition(beanName)) &#123;</span><br><span class="line">            <span class="keyword">return</span> parentBeanFactory.getBean(nameToLookup);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// Spring支持配置继承，所以需要合并父子BeanDefinition</span></span><br><span class="line">            RootBeanDefinition mbd = <span class="keyword">this</span>.getMergedLocalBeanDefinition(beanName);</span><br><span class="line">            <span class="comment">// 创建依赖对象，并处理循环依赖</span></span><br><span class="line">            <span class="keyword">if</span> (dependsOn != <span class="keyword">null</span>) &#123;&#125;</span><br><span class="line">			<span class="comment">// 创建bean实例</span></span><br><span class="line">            <span class="keyword">if</span> (mbd.isSingleton()) &#123;</span><br><span class="line">                sharedInstance = <span class="keyword">this</span>.getSingleton(beanName, () -&gt; &#123;</span><br><span class="line">                    <span class="keyword">try</span> &#123;</span><br><span class="line">                        <span class="comment">// 创建bean并放入缓存</span></span><br><span class="line">                        <span class="keyword">return</span> <span class="keyword">this</span>.createBean(beanName, mbd, args);</span><br><span class="line">                    &#125; <span class="keyword">catch</span> (BeansException var5) &#123;&#125;</span><br><span class="line">                &#125;);</span><br><span class="line">                bean = <span class="keyword">this</span>.getObjectForBeanInstance(sharedInstance, name, beanName, mbd);</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (mbd.isPrototype()) &#123;</span><br><span class="line">                ...</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                ...</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (BeansException var26) &#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">// 类型转换</span></span><br><span class="line">    <span class="keyword">if</span> (requiredType != <span class="keyword">null</span> &amp;&amp; !requiredType.isInstance(bean)) &#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> bean;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="Spring-Bean的作用域"><a href="#Spring-Bean的作用域" class="headerlink" title="Spring Bean的作用域"></a>Spring Bean的作用域</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id=<span class="string">&quot;&quot;</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">&quot;&quot;</span> scope=<span class="string">&quot;作用域&quot;</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<p><code>Spring</code>容器在初始化一个<code>Bean</code>的实例时，同时会指定该实例的作用域。</p>
+<table>
+<thead>
+<tr>
+<th align="left">作用域</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>singleton</code></td>
+<td align="left">单例模式，使用 <code>singleton</code> 定义的 <code>Bean</code> 在<code> Spring</code> 容器中只有一个实例，这也是 <code>Bean</code> 默认的作用域。</td>
+</tr>
+<tr>
+<td align="left"><code>prototype</code></td>
+<td align="left">原型模式，每次通过<code> Spring</code> 容器获取 <code>prototype</code> 定义的 <code>Bean</code> 时，容器都将创建一个新的 <code>Bean</code> 实例。</td>
+</tr>
+<tr>
+<td align="left"><code>request</code></td>
+<td align="left">在一次<code>HTTP</code>请求中，容器会返回该<code> Bean</code> 的同一个实例。而对不同的 <code>HTTP</code> 请求，会返回不同的实例，该作用域仅在当前<code> HTTP Request</code> 内有效。</td>
+</tr>
+<tr>
+<td align="left"><code>session</code></td>
+<td align="left">在一次 <code>HTTP Session</code> 中，容器会返回该 <code>Bean</code> 的同一个实例。而对不同的 <code>HTTP</code> 请求，会返回不同的实例，该作用域仅在当前 <code>HTTP Session</code> 内有效。</td>
+</tr>
+<tr>
+<td align="left"><code>global-session</code></td>
+<td align="left">在一个全局的<code> HTTP Session</code> 中，容器会返回该 Bean 的同一个实例。该作用域仅在使用 <code>portlet context</code> 时有效。</td>
+</tr>
+</tbody></table>
+<p>其中最常用的是<code>singleton</code>和<code>prototype</code>。</p>
+<p><strong>singleton</strong></p>
+<p>通常情况下，这中单例模式对于无会话状态的<code>Bean</code>（如<code>Service</code>层、<code>Dao</code>层）来说是最理想的。</p>
+<p><strong>prototype</strong></p>
+<p>对需要保持会话状态的<code>Bean</code>应该使用 prototype 作用域。 </p>
+<h4 id="Spring-Bean的生命周期"><a href="#Spring-Bean的生命周期" class="headerlink" title="Spring Bean的生命周期"></a>Spring Bean的生命周期</h4><p><code>Bean</code>的生命周期可以理解为：<code>Bean</code>的定义 -&gt;<code>Bean</code>的初始化 -&gt;<code>Bean</code>的使用 -&gt; <code>Bean</code>的销毁。</p>
+<p>对于作用范围为<code>singleton</code>的<code>Bean</code>，<code>Spring</code>会将该<code>Bean</code>放入SpringIoC的缓存池中，将触发Spring对该Bean的生命周期管理。如果作用范围为<code>prototype</code>，则将该Bean交给调用者，调用者管理该Bean的生命周期。</p>
+<p>为了定义安装和拆卸一个 <code>Bean</code>，我们只要声明带有 <code>init-method</code> 或<code>destroy-method</code>参数的 。<code>init-method </code>属性指定一个方法，在实例化 <code>Bean</code> 时，立即调用该方法。同样，<code>destroy-method</code> 指定一个方法，只有从容器中移除 <code>Bean</code> 之后，才能调用该方法。 </p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;&quot;</span> <span class="attr">class</span>=<span class="string">&quot;&quot;</span> <span class="attr">init-method</span>=<span class="string">&quot;&quot;</span> <span class="attr">destory-method</span>=<span class="string">&quot;&quot;</span>&gt;</span> <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Spring-DI（依赖注入）"><a href="#Spring-DI（依赖注入）" class="headerlink" title="Spring DI（依赖注入）"></a>Spring DI（依赖注入）</h2><p>依赖注入（<code>Dependency Injection</code>，<code>DI</code>）和控制反转含义相同，他们是从两个角度描述同一个概念。依赖注入主要有两实现方式，分别是属性<code>setter</code>注入和构造方法注入。</p>
+<h4 id="属性setter注入"><a href="#属性setter注入" class="headerlink" title="属性setter注入"></a>属性setter注入</h4><p>通过调用无参构造器或无参<code>static</code>工厂方法实例化Bean后，调用该<code>Bean</code>的<code>Setter</code>方法。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;&quot;</span> <span class="attr">class</span>=<span class="string">&quot;&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;&quot;</span> <span class="attr">value</span>=<span class="string">&quot;&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;&quot;</span> <span class="attr">ref</span>=<span class="string">&quot;&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="构造方法注入"><a href="#构造方法注入" class="headerlink" title="构造方法注入"></a>构造方法注入</h4><p>通过调用带参数的构造方法实现，每个参数代表一个依赖。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">index</span>=<span class="string">&quot;&quot;</span> <span class="attr">value</span>=<span class="string">&quot;&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">index</span>=<span class="string">&quot;&quot;</span> <span class="attr">ref</span>=<span class="string">&quot;&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Spring-Annotation-注解"><a href="#Spring-Annotation-注解" class="headerlink" title="Spring Annotation (注解)"></a>Spring Annotation (注解)</h2><p>要使用<code>Spring</code>注解需要使用<code>context</code>命名空间，通知<code>Spring</code>扫描指定目录，进行注解的解析。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">&quot;要扫描的目录&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>最基本的注解有以下七种：</p>
+<table>
+<thead>
+<tr>
+<th>注解</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>@Component</code></td>
+<td>可以使用此注解描述<code>Spring</code>中的<code>Bean</code>，但它是一个泛化的概念，仅仅表示一个组件，并且可以作用在任何层次。</td>
+</tr>
+<tr>
+<td><code>@Repository</code></td>
+<td>用于将数据访问层（<code>DAO</code>层）的类标识为 <code>Spring</code>中的<code>Bean</code>。</td>
+</tr>
+<tr>
+<td><code>@Service</code></td>
+<td>用于将业务层（<code>Service</code> 层）的类标识为 <code>Spring</code>中的<code>Bean</code>。</td>
+</tr>
+<tr>
+<td><code>@Controller</code></td>
+<td>用于将控制层的类标识为 <code>Spring</code> 中的 <code>Bean</code></td>
+</tr>
+<tr>
+<td><code>@Autowired</code></td>
+<td>用于对<code>Bean</code>的属性变量、属性的<code>Set</code>方法及构造函数进行标注，配合对应的注解处理器完成<code>Bean</code>的自动配置工作。默认按照 <code>Bean</code> 的类型进行装配。</td>
+</tr>
+<tr>
+<td><code>@Resource</code></td>
+<td>作用与<code>Autowired</code>一样，区别在于<code>@Resource</code> 默认按照 <code>Bean</code>实例名称进行装配</td>
+</tr>
+<tr>
+<td><code>@Qualifier</code></td>
+<td>与 <code>@Autowired</code>注解配合使用，会将默认的按 <code>Bean</code> 类型装配修改为按 <code>Bean</code> 的实例名称装配，<code>Bean</code> 的实例名称由 <code>@Qualifier</code> 注解的参数指定。</td>
+</tr>
+</tbody></table>
+<h2 id="Spring-AOP（-Aspect-Oriented-Programming-）"><a href="#Spring-AOP（-Aspect-Oriented-Programming-）" class="headerlink" title="Spring AOP（ Aspect Oriented Programming ）"></a>Spring AOP（ Aspect Oriented Programming ）</h2><p><code>AOP</code>（面向切面编程）和<code>OOP</code>（面向对象编程）类似，也是一种编程模式，<code>Spring AOP</code>是基于<code>AOP</code>编程模式的一个框架，它的使用有效减少了系统间的重复代码，达到了模块间的松耦合目的。</p>
+<p><code>AOP</code>采取横向抽取机制，取代了传统纵向继承体系的重复性代码，其应用主要体现在事务处理、日志管理、权限控制、异常处理等方面。 </p>
+<p>为了更好的理解<code>AOP</code>，需要了解相关的术语：</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Joinpoint</code>（连接点）</td>
+<td>指那些被拦截到的点，在 <code>Spring</code> 中，可以被动态代理拦截目标类的方法。</td>
+</tr>
+<tr>
+<td><code>Pointcut</code>（切入点）</td>
+<td>指要对哪些 <code>Joinpoint</code> 进行拦截，即被拦截的连接点。</td>
+</tr>
+<tr>
+<td><code>Advice</code>（通知）</td>
+<td>指拦截到 <code>Joinpoint </code>之后要做的事情，即对切入点增强的内容。</td>
+</tr>
+<tr>
+<td><code>Target</code>（目标）</td>
+<td>指代理的目标对象。</td>
+</tr>
+<tr>
+<td><code>Weaving</code>（植入）</td>
+<td><code>Weaving</code>（植入）</td>
+</tr>
+<tr>
+<td><code>Proxy</code>（代理）</td>
+<td>指生成的代理对象。</td>
+</tr>
+<tr>
+<td><code>Aspect</code>（切面）</td>
+<td>切入点和通知的结合。</td>
+</tr>
+</tbody></table>
+<p>AspectJ是一个基于Java语言的AOP框架，使用AspectJ进行开发通常有两种方式：</p>
+<h4 id="基于XML的声明式"><a href="#基于XML的声明式" class="headerlink" title="基于XML的声明式"></a>基于XML的声明式</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;customerDao&quot;</span> <span class="attr">class</span>=<span class="string">&quot;&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;myAspect&quot;</span> <span class="attr">class</span>=<span class="string">&quot;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">aop:config</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">aop:aspect</span> <span class="attr">ref</span>=<span class="string">&quot;myAspect&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">aop:pointcut</span> <span class="attr">expression</span>=<span class="string">&quot;execution(指定要被增强方法)&quot;</span> <span class="attr">id</span>=<span class="string">&quot;myPointCut&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">aop:before</span> <span class="attr">method</span>=<span class="string">&quot;myBefore&quot;</span> <span class="attr">pointcut-ref</span>=<span class="string">&quot;myPointCut&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">aop:after-returning</span> <span class="attr">method</span>=<span class="string">&quot;myAfterReturning&quot;</span> <span class="attr">pointcut-ref</span>=<span class="string">&quot;myPointCut&quot;</span> <span class="attr">returning</span>=<span class="string">&quot;returnVal&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">aop:around</span> <span class="attr">method</span>=<span class="string">&quot;myAround&quot;</span> <span class="attr">pointcut-ref</span>=<span class="string">&quot;myPointCut&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">aop:after-throwing</span> <span class="attr">method</span>=<span class="string">&quot;myAfterThrowing&quot;</span> <span class="attr">pointcut-ref</span>=<span class="string">&quot;myPointCut&quot;</span> <span class="attr">throwing</span>=<span class="string">&quot;e&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">aop:after</span> <span class="attr">method</span>=<span class="string">&quot;myAfter&quot;</span> <span class="attr">pointcut-ref</span>=<span class="string">&quot;myPointCut&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">aop:aspect</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">aop:config</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="基于Annotation的声明式"><a href="#基于Annotation的声明式" class="headerlink" title="基于Annotation的声明式"></a>基于Annotation的声明式</h4><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>@Aspect</code></td>
+<td>用于定义一个切面。</td>
+</tr>
+<tr>
+<td><code>@Before</code></td>
+<td>用于定义前置通知，相当于 <code>BeforeAdvice</code>。</td>
+</tr>
+<tr>
+<td><code>@AfterReturning</code></td>
+<td>用于定义后置通知，相当于 <code>AfterReturningAdvice</code>。</td>
+</tr>
+<tr>
+<td><code>@Around</code></td>
+<td>用于定义环绕通知，相当于<code>MethodInterceptor</code>。</td>
+</tr>
+<tr>
+<td><code>@AfterThrowing</code></td>
+<td>用于定义抛出通知，相当于<code>ThrowAdvice</code>。</td>
+</tr>
+<tr>
+<td><code>@After</code></td>
+<td>用于定义最终final通知，不管是否异常，该通知都会执行。</td>
+</tr>
+</tbody></table>
+<p>要使用基于<code>Annotation</code>，首先需要在<code>Xml</code>中进行配置，开启切面的自动代理</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">aop:aspectj-autoproxy</span>&gt;</span><span class="tag">&lt;/<span class="name">aop:aspectj-autoproxy</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Spring-JDBCTemplate"><a href="#Spring-JDBCTemplate" class="headerlink" title="Spring JDBCTemplate"></a>Spring JDBCTemplate</h2><p>Spring框架针对数据库开发中的应用提供了JDBCTemplate类，它提供了所有对数据库操作功能的支持。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">context:property-placeholder</span> <span class="attr">location</span>=<span class="string">&quot;classpath:c3p0-db.properties&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;dataSource&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.mchange.v2.c3p0.ComboPooledDataSource&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;driverClass&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;jdbc.driverClass&#125;&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;jdbcUrl&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;jdbc.jdbcUrl&#125;&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;user&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;jdbc.user&#125;&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;password&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;jdbc.password&#125;&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;jdbcTemplate&quot;</span> <span class="attr">class</span>=<span class="string">&quot;org.springframework.jdbc.core.JdbcTemplate&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;dataSource&quot;</span> <span class="attr">ref</span>=<span class="string">&quot;dataSource&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="Spring事务管理接口"><a href="#Spring事务管理接口" class="headerlink" title="Spring事务管理接口"></a>Spring事务管理接口</h4><p><strong>1）PlatformTransactionManager</strong></p>
+<p><code>PlatformTransactionManager </code>接口是 Spring 提供的平台事务管理器，用于管理事务。该接口中提供了三个事务操作方法，具体如下 :</p>
+<ul>
+<li><code>TransactionStatus getTransaction(TransactionDefinition definition)</code>：用于获取事务状态信息。</li>
+<li><code>void commit(TransactionStatus status)</code>：用于提交事务。</li>
+<li><code>void rollback(TransactionStatus status)</code>：用于回滚事务。</li>
+</ul>
+<p><strong>2）TransactionDefinition</strong></p>
+<p> <code>TransactionDefinition</code> 接口是事务定义（描述）的对象，它提供了事务相关信息获取的方法，其中包括五个操作，具体如下：</p>
+<ul>
+<li><code>String getName()</code>：获取事务对象名称。</li>
+<li><code>int getIsolationLevel()</code>：获取事务的隔离级别。</li>
+<li><code>int getPropagationBehavior()</code>：获取事务的传播行为。</li>
+<li><code>int getTimeout()</code>：获取事务的超时时间。</li>
+<li><code>boolean isReadOnly()</code>：获取事务是否只读。</li>
+</ul>
+<p><strong>3）TransactionStatus</strong></p>
+<p><code> TransactionStatus</code> 接口是事务的状态，它描述了某一时间点上事务的状态信息。其中包含六个操作，具体如下：</p>
+<ul>
+<li> <code>void flush() </code>： 刷新事务 </li>
+<li><code> boolean hasSavepoint()</code> ： 获取是否存在保存点 。</li>
+<li><code>boolean isCompleted()</code>： 获取事务是否完成 。</li>
+<li><code>boolean isNewTransaction()</code>： 获取是否是新事务 。</li>
+<li><code> boolean isRollbackOnly()</code> ： 获取是否回滚 。</li>
+<li> <code>void setRollbackOnly()</code> ： 设置事务回滚 。</li>
+</ul>
+<h4 id="基于Xml实现事务管理器"><a href="#基于Xml实现事务管理器" class="headerlink" title="基于Xml实现事务管理器"></a>基于Xml实现事务管理器</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;txManager&quot;</span> <span class="attr">class</span>=<span class="string">&quot;org.springframework.jdbc.datasource.DataSourceTransactionManager&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;dataSource&quot;</span> <span class="attr">ref</span>=<span class="string">&quot;dataSource&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">tx:advice</span> <span class="attr">id</span>=<span class="string">&quot;txAdvice&quot;</span> <span class="attr">transaction-manager</span>=<span class="string">&quot;txManager&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tx:attributes</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tx:method</span> <span class="attr">name</span>=<span class="string">&quot;&quot;</span> <span class="attr">propagation</span>=<span class="string">&quot;SUPPORTS&quot;</span> <span class="attr">rollback-for</span>=<span class="string">&quot;Exception&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tx:method</span> <span class="attr">name</span>=<span class="string">&quot;&quot;</span> <span class="attr">propagation</span>=<span class="string">&quot;REQUIRED&quot;</span> <span class="attr">isolation</span>=<span class="string">&quot;DEFAULT&quot;</span> <span class="attr">read-only</span>=<span class="string">&quot;false&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tx:attributes</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">tx:advice</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">aop:config</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">aop:pointcut</span> <span class="attr">expression</span>=<span class="string">&quot;execution()&quot;</span> <span class="attr">id</span>=<span class="string">&quot;txPointCut&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">aop:advisor</span> <span class="attr">pointcut-ref</span>=<span class="string">&quot;txPointCut&quot;</span> <span class="attr">advice-ref</span>=<span class="string">&quot;txAdvice&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">aop:config</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="基于Annotation实现事务管理器"><a href="#基于Annotation实现事务管理器" class="headerlink" title="基于Annotation实现事务管理器"></a>基于Annotation实现事务管理器</h4><p>首先在容器中注册驱动</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">tx:annotation-driven</span> <span class="attr">transaction-manager</span>=<span class="string">&quot;txManager&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>然后在使用事务的业务类或者方法中使用注解<code>@Transactional</code></p>
+
+    </div>
+</article>
+	</main>
+	<footer></footer>
+	
+        
+            
+<script src="https://cdn.bootcdn.net/ajax/libs/instantclick/3.1.0/instantclick.min.js"></script>
+
+        
+            
+<script src="/js/xc.js"></script>
+
+        
+    
+</body>
+</html>

@@ -1,0 +1,260 @@
+@charset "utf-8";
+
+/**
+clear base style
+*/
+html {
+    display: block;
+}
+
+body {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    table-layout: auto;
+}
+
+input, select {
+    padding: 0;
+    outline: none;
+    border: none;
+}
+
+button {
+    padding: 0;
+    background: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover, button:focus {
+    outline: none;
+    border: none;
+}
+
+/**
+global style
+*/
+
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+html {
+    background-color: #f4f5f5;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    font-family: -apple-system,system-ui,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif,BlinkMacSystemFont,"Helvetica Neue","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Arial;
+    font-size: 14px;
+    width: 680px;
+    margin: 40px auto 0;
+    background-color: #ffffff;
+}
+
+header, main {
+    padding-top: 16px;
+    padding-bottom: 16px;
+}
+
+img {
+    max-width: 100%;
+}
+
+/**
+nav style
+*/
+header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid hsla(0,0%,59.2%,.1);
+}
+
+nav {
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+nav a {
+    border-right: 1px solid hsla(0,0%,59.2%,.2);
+    display: inline-block;
+    width: 56px;
+    font-size: 14px;
+    text-align: center;
+    border-bottom: none;
+}
+
+nav a:last-child {
+    border: none;
+}
+
+
+/**
+    Markdown style
+*/
+
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 35px;
+    margin-bottom: 10px;
+}
+
+h2:before, h3:before, h4:before, h5:before, h6:before {
+    content: "#";
+    display: inline-block;
+    color: #3eaf7c;
+    padding-right: 8px;
+}
+
+h2 {
+    padding-bottom: 12px;
+    font-size: 24px;
+    border-bottom: 1px solid #ececec;
+}
+
+h3 {
+    font-size: 18px;
+    padding-bottom: 0;
+}
+
+p {
+    margin: 22px 0;
+    line-height: 1.6;
+    letter-spacing: 1px;
+}
+
+a {
+    color: #3eaf7c;
+    border-bottom: 1px solid #3eaf7c;
+}
+
+blockquote {
+    color: #666;
+    padding: 1px 23px;
+    margin: 22px 0;
+    border-left: 4px solid #42b983;
+    background-color: rgba(66,184,131,.1);
+}
+
+strong {
+    color: #3eaf7c;
+}
+
+ul, ol {
+    margin: 0;
+    padding: 0 0 0 28px;
+}
+
+ul li, ol li {
+    padding-left: 6px;
+    margin: 16px 0;
+    line-height: 1.6;
+    letter-spacing: 1px;
+}
+
+table {
+    width: 100%;
+    margin: 22px 0;
+    line-height: 1.6;
+    text-align: left;
+    border: 1px solid #ececec;
+}
+
+td, th {
+    padding: 8px 6px;
+    border-bottom: 1px solid #ececec;
+    border-right: 1px solid #ececec;
+}
+
+thead {
+    background-color: #f6f6f6;
+}
+
+tr:nth-child(2n) {
+    background-color: #fcfcfc;
+}
+
+/*
+pagination style
+*/
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px 24px 0 24px;
+    border-top: 1px solid hsla(0,0%,59.2%,.1);
+}
+
+.katex {
+    font-size: 1em;
+    text-indent: 0;
+    text-rendering: auto;
+}
+
+#instantclick-bar {
+    background-color: #3eaf7c;
+}
+
+.shadow {
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 5%);
+}
+
+.btn {
+    display: inline-block;
+    padding-left: 2px;
+    padding-right: 2px;
+    min-width: 50px;
+    line-height: 26px;
+    font-size: 13px;
+    text-align: center;
+    color: #3eaf7c;
+    border: 1px solid #3eaf7c;
+}
+
+/**
+home style
+*/
+main > * {
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+
+
+article div:first-child {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+article div:first-child img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+article div:first-child > div {
+    flex-grow: 1;
+}
+
+article div:first-child > div {
+    line-height: 1.6;
+}
+
+article div:first-child > div > div:first-child {
+    font-family: "Segoe UI", serif;
+    font-style: italic;
+    font-weight: 600;
+}
+
+article div:first-child > div > div:last-child {
+    color: #909090;
+    font-size: 13px;
+}

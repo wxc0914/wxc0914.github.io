@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>WeiXiaochen&#39;s blog</title>
+	<meta name="keywords" content=""/>
+	<meta name="description" content=""/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1""/>
+	
+        <meta name="keywords" content="" />
+    
+	
+		
+			
+<link rel="stylesheet" href="/css/highlight.css">
+
+		
+			
+<link rel="stylesheet" href="/css/xc.css">
+
+		
+	
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body>
+	<header>
+		<nav>
+			
+				<a href="/">首页</a> 
+			
+				<a href="/archives">归档</a> 
+			
+				<a href="/about">关于</a> 
+			
+				<a href="/link">友链</a> 
+			
+		</div>
+	</header>
+	<main>
+		<article>
+	
+	
+		
+		
+		<div>
+			<img src="https://cdn.jsdelivr.net/gh/wxc0914/image/a3625c26bc8735174100f6d487763b06.png" alt="avatar"/>
+			<div>
+				<div>
+					WeiXiaochen
+				</div>
+				<div>
+					2021年05月05日
+				</div>
+			</div>
+			
+				
+					<a class="btn" href="/categories/Java-Web/">
+						Java Web
+					</a>
+				
+			
+		</div>
+		<h1>
+			XML
+		</h1>
+		<div>
+			<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>Extensible Markup Language 可扩展标记语言。</p>
+<p>功能：主要用来存储数据</p>
+<ol>
+<li>配置文件</li>
+<li>在网络中传输</li>
+</ol>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><h3 id="基本语法："><a href="#基本语法：" class="headerlink" title="基本语法："></a>基本语法：</h3><p>xml文档名的后缀名.xml</p>
+<p>xml第一行必须定义为文档声明</p>
+<p>xml文档中有且仅有一个根标签</p>
+<p>属性值必须使用引号（单双引号都可）引起来</p>
+<p>标签必须正确关闭</p>
+<p>xml标签名称区分大小写</p>
+<h3 id="快速入门"><a href="#快速入门" class="headerlink" title="快速入门"></a>快速入门</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot;&gt;</span></span><br><span class="line"><span class="meta">&lt;users&gt;</span></span><br><span class="line"><span class="meta">	&lt;user id=&#x27;1&#x27;&gt;</span></span><br><span class="line"><span class="meta">  		&lt;name&gt;张三&lt;/name&gt;</span></span><br><span class="line"><span class="meta">  		&lt;age&gt;23&lt;/age&gt;</span></span><br><span class="line"><span class="meta">	&lt;/user&gt;</span></span><br><span class="line"><span class="meta">&lt;/users&gt;</span></span><br><span class="line"><span class="meta"></span></span><br></pre></td></tr></table></figure>
+
+<p><strong>文档声明</strong></p>
+<ol>
+<li><p>格式：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml 属性列表?&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li><p>属性列表：</p>
+<p>version：版本号 ，必须的属性</p>
+<p>encoding：编码方式。告诉 解析引擎当前文档使用的字符集，默认值：ISO-8859-1</p>
+<p>standalone：是否独立（yse：不依赖其他文件，no：依赖其他文件）</p>
+</li>
+</ol>
+<p><strong>标签</strong></p>
+<p>标签名称是自定义的</p>
+<p><strong>属性</strong></p>
+<p>id属性值唯一</p>
+<p><strong>文本</strong></p>
+<p>CDATA区：在该区域中的数据会被原样展示</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;![DATA[ 数据 ]]&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="约束"><a href="#约束" class="headerlink" title="约束"></a>约束</h2><p>规定xml文档的书写规则</p>
+<h3 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h3><p>DTD：一种简单的约束技术</p>
+<ul>
+<li><p>内部dtd：将约束规则定义在xml文档中</p>
+</li>
+<li><p>外部dtd：释放约束的规则定义在外部的dtd文件中</p>
+<ul>
+<li>本地：<code>&lt;!DOCTYPE 根标签名 SYSTEM &quot;dtd文件的位置&quot;&gt;</code></li>
+<li>网络：<code>&lt;!DOCTYPE 根标签名 PUBLIC &quot;dtd文件名字&quot; &quot;dtd文件的位置URL&quot;&gt;</code></li>
+</ul>
+</li>
+</ul>
+<p>Schema：一种复杂的约束技术</p>
+<ol>
+<li><p>填写xnl文档的根元素</p>
+</li>
+<li><p>引入xsi前缀，<code>xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</code></p>
+</li>
+<li><p>引入xsd文件命名空间。<code>xsi:schemaLocation=&quot;http://www.itcast.cn/cml student.xsd&quot;</code></p>
+</li>
+<li><p>为每一个xsd约束声明一个前缀，作为标识 <code>xmlns=&quot;http://www.itcast.cn/xml&quot;</code></p>
+</li>
+</ol>
+<h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><p>解析：将文档中的数据读取到内存中</p>
+<p>写入：将内存中的数据保存到xml文档中。持久化的存储</p>
+<h3 id="解析xml的方式"><a href="#解析xml的方式" class="headerlink" title="解析xml的方式"></a>解析xml的方式</h3><p><strong>DOM</strong>：将标记语言文档一次性加载进内存，在内存中形成一颗dom树</p>
+<p>优点：操作方便，可以对文档进行CRUD的所有操作</p>
+<p>缺点：占内存</p>
+<p><strong>SAX</strong>：逐行读取，基于事件驱动的。</p>
+<p>优点：不占内存</p>
+<p>缺点：只能读取，不能增删改。</p>
+<h3 id="xml常见的解析器："><a href="#xml常见的解析器：" class="headerlink" title="xml常见的解析器："></a>xml常见的解析器：</h3><p><strong>JAXP</strong></p>
+<p><strong>DOM4J</strong></p>
+<p><strong>Jsoup</strong>：是一款Java的解析器，可直接解析某个URL地址、HTML文本内容。</p>
+<p>快速入门</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">String path = JsoupDemo.getClassLoader().getResource(<span class="string">&quot;student.xml&quot;</span>).getPath();</span><br><span class="line">Document document = Jsoup.parse(<span class="keyword">new</span> File(path), <span class="string">&quot;utf-8&quot;</span>);</span><br><span class="line">Elements elements = document.getElementsByTag(<span class="string">&quot;name&quot;</span>);</span><br><span class="line">Element element = elements.get(<span class="number">0</span>);</span><br><span class="line">String name = element.text();</span><br></pre></td></tr></table></figure>
+
+<p>对象的使用</p>
+<ul>
+<li><p>Jsoup：工具类，可以解析html或xml文档，返回Document</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 方式一</span></span><br><span class="line">parse(File in, String charsetName); <span class="comment">// 解析xml或html文件</span></span><br><span class="line"><span class="comment">// 方式二</span></span><br><span class="line">parse(String html); <span class="comment">// 解析xml或html字符串</span></span><br><span class="line"><span class="comment">// 方式三（可以用该方式做爬虫相关的工作）</span></span><br><span class="line">parse(URL url, <span class="keyword">int</span> timeoutMillis); <span class="comment">// 通过网络获取指定路径的html或xml的文档对象</span></span><br></pre></td></tr></table></figure></li>
+<li><p>Document：文档对象。代表内存中的Dom树</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">getElementById(String id); <span class="comment">// 根据id属性值获取唯一的Element对象</span></span><br><span class="line">getElementsByTag(String tagName);</span><br><span class="line">getElementsByAttribute(String key);</span><br><span class="line">getElementsByAttributeValue(String key, String value);</span><br></pre></td></tr></table></figure></li>
+<li><p>Elements：元素Element对象的集合。可以当作<code>ArrayList&lt;Element&gt;</code>来使用</p>
+</li>
+<li><p>Elment：元素对象</p>
+<p>获取子元素</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">getElementById(String id); <span class="comment">// 根据id属性值获取唯一的Element对象</span></span><br><span class="line">getElementsByTag(String tagName);</span><br><span class="line">getElementsByAttribute(String key);</span><br><span class="line">getElementsByAttributeValue(String key, String value);</span><br></pre></td></tr></table></figure>
+
+<p>获取属性值</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">String <span class="title">attr</span><span class="params">(String key)</span></span>; <span class="comment">// 根据属性名获取属性值</span></span><br></pre></td></tr></table></figure>
+
+<p>获取文本内容</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">String <span class="title">text</span><span class="params">()</span></span>; <span class="comment">// 只获取所有子标签的文本内容</span></span><br><span class="line"><span class="function">String <span class="title">html</span><span class="params">()</span></span>; <span class="comment">// 获取标签体的所有内容（包括子标签的标签和文本内容）</span></span><br></pre></td></tr></table></figure></li>
+<li><p>Node：节点对象（是Document和Element的父类）</p>
+</li>
+</ul>
+<p>快捷的查询方式</p>
+<ul>
+<li><p>selector：选择器</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Elements <span class="title">select</span><span class="params">(String cssQuery)</span></span></span><br></pre></td></tr></table></figure></li>
+<li><p>Xpath：Xpath即为XML路径语言，它是一种用来确定XML文档中某部分位置的语言</p>
+<p>根据document对象创建JXDocument对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">JxDocument jxDocument = <span class="keyword">new</span> JXDocument(document)</span><br></pre></td></tr></table></figure>
+
+<p>结合XPath语法查询</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">List&lt;JXNode&gt; jxNodes = jxDocument.selN(<span class="string">&quot;//student&quot;</span>); <span class="comment">// 查询所有的student标签</span></span><br><span class="line">List&lt;JXNode&gt; jxNodes = jxDocument.selN(<span class="string">&quot;//student/name&quot;</span>); <span class="comment">// 查询所有的student标签下的所有name标签</span></span><br><span class="line">List&lt;JXNode&gt; jxNodes = jxDocuemnt.selN(<span class="string">&quot;//student/name[@id]&quot;</span>); <span class="comment">// 查询带有id属性的name标签</span></span><br><span class="line">List&lt;JXNode&gt; jxNodes = jxDocuemnt.selN(<span class="string">&quot;//student/name[@id=&#x27;itcast&#x27;]&quot;</span>); <span class="comment">// 查询带有id属性的name标签,并且属性值为itcast</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<p><strong>PULL</strong></p>
+
+		</div>
+	
+</article>
+
+<div class="pagination">
+	
+		<a href="/page/6/">< 上一篇：String</a>
+	
+	
+		<a href="/page/8/">下一篇: Hello World ></a>
+	
+</div>
+	</main>
+	<footer></footer>
+	
+        
+            
+<script src="https://cdn.bootcdn.net/ajax/libs/instantclick/3.1.0/instantclick.min.js"></script>
+
+        
+            
+<script src="/js/xc.js"></script>
+
+        
+    
+</body>
+</html>

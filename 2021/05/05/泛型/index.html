@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>WeiXiaochen&#39;s blog</title>
+	<meta name="keywords" content=""/>
+	<meta name="description" content=""/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1""/>
+	
+        <meta name="keywords" content="" />
+    
+	
+		
+			
+<link rel="stylesheet" href="/css/highlight.css">
+
+		
+			
+<link rel="stylesheet" href="/css/xc.css">
+
+		
+	
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body>
+	<header>
+		<nav>
+			
+				<a href="/">首页</a> 
+			
+				<a href="/archives">归档</a> 
+			
+				<a href="/about">关于</a> 
+			
+				<a href="/link">友链</a> 
+			
+		</div>
+	</header>
+	<main>
+		<article>
+    <div>
+        <img src="https://cdn.jsdelivr.net/gh/wxc0914/image/a3625c26bc8735174100f6d487763b06.png" alt="avatar"/>
+        <div>
+            <div>
+                WeiXiaochen
+            </div>
+            <div>
+                2021年05月05日
+            </div>
+        </div>
+        
+            
+                <a class="btn" href="/categories/Java/">
+                    Java
+                </a>
+            
+        
+    </div>
+    <h1>
+        泛型
+    </h1>
+    <div>
+        <h2 id="泛型类"><a href="#泛型类" class="headerlink" title="泛型类"></a>泛型类</h2><p>一个泛型类就是具有一个或多个类型变量的类。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Pair</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> T first;</span><br><span class="line">	<span class="keyword">private</span> T second;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Pair</span><span class="params">()</span> </span>&#123;first = <span class="keyword">null</span>; second = <span class="keyword">null</span>;&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Pair</span><span class="params">(T first, T second)</span> </span>&#123;<span class="keyword">this</span>.first = first; <span class="keyword">this</span>.second = second;&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> T <span class="title">getFirst</span><span class="params">()</span> </span>&#123;<span class="keyword">return</span> first;&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> T <span class="title">getSecond</span><span class="params">()</span> </span>&#123;<span class="keyword">return</span> second;&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setFirst</span><span class="params">(T newValue)</span> </span>&#123;fisrt = newValue;&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setSecond</span><span class="params">(T newValue)</span> </span>&#123;second = newValue;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>泛型类可以有多个类型变量，如下面的例子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Pair</span>&lt;<span class="title">T</span>, <span class="title">U</span>&gt; </span>&#123;...&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="泛型方法"><a href="#泛型方法" class="headerlink" title="泛型方法"></a>泛型方法</h2><p>泛型方法可以定义在普通类中，也可以定义在泛型类中。</p>
+<p>下面的例子，从尖括号和类型变量可以看出，是一个泛型方法。 类型变量放在修饰符（这里是<code>public static</code>）后面，返回类型前面。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ArrayAlg</span> </span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">T <span class="title">getMiddle</span><span class="params">(T... a)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> a[a.length / <span class="number">2</span>];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="类型变量的限定"><a href="#类型变量的限定" class="headerlink" title="类型变量的限定"></a>类型变量的限定</h2><p>有时，类或方法需要对类型变量加以约束。</p>
+<p>比如下面的例子，计算数组中的最小元素。将T限制为实现了Comparable接口的类，可以通过对类型变量T设置限定实现这一点。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ArrayAlg</span> </span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> &lt;T extends Comparable&gt; <span class="function">T <span class="title">min</span><span class="params">(T[] a)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (a == <span class="keyword">null</span> || a.length == <span class="number">0</span>) <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">		T smllest = a[<span class="number">0</span>];</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; a.length; i++) &#123;</span><br><span class="line">			<span class="keyword">if</span> (smallest.compareTo(a[i] &gt; <span class="number">0</span>) smallest = a[i];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> smallest;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>一个类型变量或或通配符可以有多个限定。限定类型用<code>&amp;</code>分隔，而逗号用来分隔类型变量。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">T extends Comparable &amp; Serializable</span><br></pre></td></tr></table></figure>
+
+<h2 id="泛型代码和虚拟机"><a href="#泛型代码和虚拟机" class="headerlink" title="泛型代码和虚拟机"></a>泛型代码和虚拟机</h2><p>虚拟机没有泛型类对象，所有对象都属于普通类。</p>
+<h3 id="类型擦除"><a href="#类型擦除" class="headerlink" title="类型擦除"></a>类型擦除</h3><p>无论何时定义一个泛型类，都自动提供了一个相应的原始类型。原始类型的名字就是删除类型参数后的泛型类型名。擦除类型变量，并替换为第一个限定类型（无限定的变量用Object）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Pair</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="keyword">private</span> Object first;</span><br><span class="line">	<span class="keyword">private</span> Object second;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Pair</span><span class="params">()</span> </span>&#123;first = <span class="keyword">null</span>; second = <span class="keyword">null</span>;&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Pair</span><span class="params">(Object first, Object second)</span> </span>&#123;<span class="keyword">this</span>.first = first; <span class="keyword">this</span>.second = second;&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> Object <span class="title">getFirst</span><span class="params">()</span> </span>&#123;<span class="keyword">return</span> first;&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> Object <span class="title">getSecond</span><span class="params">()</span> </span>&#123;<span class="keyword">return</span> second;&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setFirst</span><span class="params">(Object newValue)</span> </span>&#123;fisrt = newValue;&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setSecond</span><span class="params">(Object newValue)</span> </span>&#123;second = newValue;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="翻译泛型表达式"><a href="#翻译泛型表达式" class="headerlink" title="翻译泛型表达式"></a>翻译泛型表达式</h3><p>当程序调用泛型方法时，如果擦除返回类型，编译器插入强制类型转换。比如下面的这个例子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Pair&lt;Employee&gt; buddies = ...;</span><br><span class="line">Employee buddy = buddies.getFirst();</span><br></pre></td></tr></table></figure>
+<p>擦除getFirst的返回类型后将返回Object类型。编译器自动插入 Employee的强制类型转换。也就是说，编译器把这个方法调用翻译为两条虚拟机指令：</p>
+<ul>
+<li>对原始方法Pair.getFirst的调用。</li>
+<li>将返回的Object类型强制转换为Employee类型。</li>
+</ul>
+<h3 id="翻译泛型方法"><a href="#翻译泛型方法" class="headerlink" title="翻译泛型方法"></a>翻译泛型方法</h3><p>类型擦除也会出现在泛型方法中。比如下面的例子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DateInterval</span> <span class="keyword">extends</span> <span class="title">Pair</span>&lt;<span class="title">LocalDate</span>&gt; </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setSecond</span><span class="params">(LocalDate second)</span> </span>&#123;...&#125;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>将其类型擦除后：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DateInterval</span> <span class="keyword">extends</span> <span class="title">Pair</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setSecond</span><span class="params">(LocalDate second)</span> </span>&#123;...&#125;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>现在的问题是：存在另一个从Pair继承的setSecond方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setSecond</span><span class="params">(Object second)</span></span></span><br></pre></td></tr></table></figure>
+<p>这样的话，类型擦除与多态就发生了冲突。要解决这个问题，就需要编译器在DateInterval类中生成一个桥方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setSecond</span><span class="params">(Object second)</span> </span>&#123;</span><br><span class="line">	setSecond((Date) second);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>不能这样编写Java代码（在这里，具有相同参数类型的两个方法是不合法的），它们都没有参数。但是在虚拟机中，用参数类型和返回类型决定一个方法。因此，编译器可能产生两个仅返回类型不同的方法字节码，虚拟机能够正确的处理这一情况。</p>
+<p>其实，桥方法不仅用于泛型类型，在一个方法覆盖另一个方法时可以至指定一个更严格的返回类型。</p>
+<h2 id="类型通配符"><a href="#类型通配符" class="headerlink" title="类型通配符"></a>类型通配符</h2>
+    </div>
+</article>
+	</main>
+	<footer></footer>
+	
+        
+            
+<script src="https://cdn.bootcdn.net/ajax/libs/instantclick/3.1.0/instantclick.min.js"></script>
+
+        
+            
+<script src="/js/xc.js"></script>
+
+        
+    
+</body>
+</html>

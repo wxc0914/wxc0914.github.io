@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>WeiXiaochen&#39;s blog</title>
+	<meta name="keywords" content=""/>
+	<meta name="description" content=""/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1""/>
+	
+        <meta name="keywords" content="" />
+    
+	
+		
+			
+<link rel="stylesheet" href="/css/highlight.css">
+
+		
+			
+<link rel="stylesheet" href="/css/xc.css">
+
+		
+	
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body>
+	<header>
+		<nav>
+			
+				<a href="/">首页</a> 
+			
+				<a href="/archives">归档</a> 
+			
+				<a href="/about">关于</a> 
+			
+				<a href="/link">友链</a> 
+			
+		</div>
+	</header>
+	<main>
+		<article>
+    <div>
+        <img src="https://cdn.jsdelivr.net/gh/wxc0914/image/a3625c26bc8735174100f6d487763b06.png" alt="avatar"/>
+        <div>
+            <div>
+                WeiXiaochen
+            </div>
+            <div>
+                2021年05月05日
+            </div>
+        </div>
+        
+            
+                <a class="btn" href="/categories/Java-Web/">
+                    Java Web
+                </a>
+            
+        
+    </div>
+    <h1>
+        Cookie和Session
+    </h1>
+    <div>
+        <h2 id="会话技术"><a href="#会话技术" class="headerlink" title="会话技术"></a>会话技术</h2><p>会话：一次会话中包含多次请求和响应。</p>
+<p>功能：在一次会话的范围内的多次请求间，共享数据</p>
+<h2 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h2><p>概念：客户端会话技术，将数据保存到客户端。</p>
+<p>快速入门：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建cookie对象，绑定数据</span></span><br><span class="line"><span class="keyword">new</span> Cookie(String name, String value);</span><br><span class="line"><span class="comment">// 发送cookie对象</span></span><br><span class="line">response.addCookie(Cookie cookie);</span><br><span class="line"><span class="comment">// 获取cookie，拿到数据</span></span><br><span class="line">request.getCookies();</span><br></pre></td></tr></table></figure>
+
+<p>实现原理：基于响应头set-cookie和请求头cookie实现。</p>
+<p>cookie的细节：</p>
+<ul>
+<li><p>可以创建多个Cookie对象，使用response调用多次addCookie方法发送cookie即可。</p>
+</li>
+<li><p>默认情况下，当浏览器关闭后，Cookie数据被销毁。</p>
+</li>
+<li><p>持久化存储：</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 正数：将cookie数据写到硬盘的文件中，持久化存储。</span></span><br><span class="line"><span class="comment">// 负数：默认值</span></span><br><span class="line"><span class="comment">// 零：删除cookie信息</span></span><br><span class="line">setMaxAge(<span class="keyword">int</span> seconds);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>在tomcat8以后，才支持存储中文数据。但是对特殊字符还是不支持。</p>
+</li>
+<li><p>默认情况下，cookie会设置当前虚拟目录为共享范围。</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 调用这个方法，可以设置同意服务器下的多个项目共享范围。</span></span><br><span class="line">setPath(String path);</span><br><span class="line"><span class="comment">// 如果一级域名相同，那么多个服务器之间可以共享。</span></span><br><span class="line">setDomain(String path);</span><br></pre></td></tr></table></figure>
+
+<p>cookie特点：</p>
+<ul>
+<li><p>cookie存储数据在客户端浏览器。</p>
+</li>
+<li><p>浏览器对于单个cookie的大小有限制（4KB）以及对同一个域名下的总cookie数量也有限制（20个）。</p>
+</li>
+<li><p>cookie一般用于存储少量的不太敏感的数据。</p>
+</li>
+</ul>
+<h2 id="Session"><a href="#Session" class="headerlink" title="Session"></a>Session</h2><p>概念：服务端的会话技术，再一次会话的多次请求间共享数据，将数据保存在服务器端的对象中。</p>
+<p>快速入门：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取session对象</span></span><br><span class="line">HttpSession session = request.getSession();</span><br><span class="line"><span class="comment">// 使用session对象</span></span><br><span class="line"><span class="function">Object <span class="title">getAtrribute</span><span class="params">(String name)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">setAtrribute</span><span class="params">(String name, Object object)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">removeAttribute</span><span class="params">(String name)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<p>实现原理：Session的实现是依赖于cookie的。</p>
+<p>session细节：</p>
+<ul>
+<li><p>当客户端关闭后服务器不关闭，两次获取session不是同一个。</p>
+</li>
+<li><p>客户端不关闭，服务器不关闭，两次获取的session不是同一个。<br>session的钝化：在服务器正常关闭之前，将session对象序列化到硬盘上。<br>session的活化：在服务器启动后，将session文件转化为内存中的session对象。</p>
+</li>
+<li><p>session被销毁：服务器关闭、session对象调用invalidate()、session默认存活时间是30分钟。<br>可以选择性修改配置</p>
+</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">session-config</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">session-timeout</span>&gt;</span>30<span class="tag">&lt;/<span class="name">session-timeout</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">session-config</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>session特点：</p>
+<ul>
+<li><p>session用于存储一次绘画的多次请求的数据，存在服务器端。</p>
+</li>
+<li><p>session可以存储任意类型，任意大小的数据。</p>
+</li>
+</ul>
+
+    </div>
+</article>
+	</main>
+	<footer></footer>
+	
+        
+            
+<script src="https://cdn.bootcdn.net/ajax/libs/instantclick/3.1.0/instantclick.min.js"></script>
+
+        
+            
+<script src="/js/xc.js"></script>
+
+        
+    
+</body>
+</html>
