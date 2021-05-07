@@ -3,14 +3,13 @@
 <head>
 	<meta charset="utf-8">
 	<title><%= config.title %></title>
-	<meta name="keywords" content=""/>
-	<meta name="description" content=""/>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1""/>
 	<% if (page.keywords !== undefined) { %>
         <meta name="keywords" content="<%=page.keywords%>" />
-    <% } else if (theme.keywords !== undefined) { %>
-        <meta name="keywords" content="<%=theme.keywords%>" />
-    <% } %>
+	<% } %>
+	<% if (page.description !== undefined) { %>
+        <meta name="keywords" content="<%=page.keywords%>" />
+	<% } %>
 	<% if (theme.stylesheets !== undefined && theme.stylesheets.length > 0) { %>
 		<% theme.stylesheets.forEach(function(path) { %>
 			<%- css(path) %>
@@ -28,11 +27,26 @@
 	<main>
 		<%- body %>
 	</main>
-	<footer></footer>
+	<footer>
+		<div id="gitment"></div>
+	</footer>
 	<% if (theme.scripts !== undefined && theme.scripts.length > 0) { %>
         <% theme.scripts.forEach(function(path) { %>
             <%- js(path) %>
         <% }); %>
     <% } %>
+	<% if (is_home() || is_post() || is_page()) { %>
+        <script>
+            var gitment = new Gitment({
+                owner: "<%=theme.gitment.owner%>",
+                repo: "<%=theme.gitment.repo%>",
+                oauth: {
+                    client_id: "<%=theme.gitment.client_id%>",
+                    client_secret: "<%=theme.gitment.client_secret%>"
+                }
+            });
+            gitment.render("gitment");
+        </script>
+	<% } %>
 </body>
 </html>

@@ -22,24 +22,6 @@ table {
     table-layout: auto;
 }
 
-input, select {
-    padding: 0;
-    outline: none;
-    border: none;
-}
-
-button {
-    padding: 0;
-    background: #fff;
-    border: none;
-    cursor: pointer;
-}
-
-button:hover, button:focus {
-    outline: none;
-    border: none;
-}
-
 /**
 global style
 */
@@ -61,9 +43,15 @@ body {
     background-color: #ffffff;
 }
 
-header, main {
+header, main, footer {
     padding-top: 16px;
     padding-bottom: 16px;
+}
+
+main > *,
+footer > * {
+    padding-left: 24px;
+    padding-right: 24px;
 }
 
 img {
@@ -107,6 +95,10 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 10px;
 }
 
+h1 {
+    font-size: 24px;
+}
+
 h2:before, h3:before, h4:before, h5:before, h6:before {
     content: "#";
     display: inline-block;
@@ -116,12 +108,12 @@ h2:before, h3:before, h4:before, h5:before, h6:before {
 
 h2 {
     padding-bottom: 12px;
-    font-size: 24px;
+    font-size: 20px;
     border-bottom: 1px solid #ececec;
 }
 
 h3 {
-    font-size: 18px;
+    font-size: 16px;
     padding-bottom: 0;
 }
 
@@ -219,14 +211,8 @@ pagination style
 }
 
 /**
-home style
+article style
 */
-main > * {
-    padding-left: 24px;
-    padding-right: 24px;
-}
-
-
 
 article div:first-child {
     display: flex;
@@ -257,4 +243,33 @@ article div:first-child > div > div:first-child {
 article div:first-child > div > div:last-child {
     color: #909090;
     font-size: 13px;
+}
+
+/**
+gitment
+*/
+
+#gitment a {
+    color: #3eaf7c;
+    border-bottom: 1px solid #3eaf7c;
+    line-height: 1.5;
+}
+
+#gitment a:hover {
+    text-decoration: none;
+}
+
+.gitment-editor-submit {
+    background-color: #3eaf7c !important;
+}
+.gitment-editor-avatar {
+    border-bottom: none !important;
+}
+
+#gitment nav {
+    padding: 0;
+}
+
+.gitment-editor-footer-tip, .gitment-footer-container {
+    display: none !important;
 }
