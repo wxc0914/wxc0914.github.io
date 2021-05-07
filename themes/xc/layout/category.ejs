@@ -1,0 +1,9 @@
+<div>
+    <h3><%= page.category%></h3>
+    <ul>
+        <% let result = site.categories.findOne({name: page.category}) %>
+        <% result.posts.sort('-date').each(function(post) { %>
+            <li><a href="<%- url_for(post.path) %>"><%= post.title %></a></li>
+        <% })%>
+    </ul>
+</div>

@@ -1,0 +1,32 @@
+#导航栏
+menu:
+  Home: /
+  Archive: /archives
+  About: /about
+  Link: /link
+
+# 关键字
+keywords: 
+
+# 站点微缩图
+favicon: https://cdn.jsdelivr.net/gh/wxc0914/image/a3625c26bc8735174100f6d487763b06.png
+
+# 站点 Logo
+logo: https://cdn.jsdelivr.net/gh/wxc0914/image/a3625c26bc8735174100f6d487763b06.png
+
+#css 样式表路径
+stylesheets:
+- /css/highlight.css
+- /css/xc.css
+
+#javascript 脚本路径
+scripts:
+- https://cdn.bootcdn.net/ajax/libs/instantclick/3.1.0/instantclick.min.js
+- /js/xc.js
+
+#gitment
+gitment:
+  owner: 
+  repo: 
+  client_id: 
+  client_secret: 

@@ -1,0 +1,40 @@
+<article>
+	<% let prev, next %>
+	<% page.posts.forEach(function(post){ %>
+		<% prev = post.prev %>
+		<% next = post.next %>
+		<div>
+			<img src="<%= theme.logo %>" alt="avatar"/>
+			<div>
+				<div>
+					<%= config.author %>
+				</div>
+				<div>
+					<%-  date(post.date, 'YYYY年MM月DD日') %>
+				</div>
+			</div>
+			<% post.categories.forEach(function(category, i){ %>
+				<% if (i == 0) { %>
+					<a class="btn" href="<%- url_for(category.path) %>">
+						<%= category.name %>
+					</a>
+				<% } %>
+			<% }) %>
+		</div>
+		<h1>
+			<%= post.title %>
+		</h1>
+		<div>
+			<%- post.content %>
+		</div>
+	<% }) %>
+</article>
+
+<div class="pagination">
+	<% if (prev != undefined ) { %>
+		<a href="<%- url_for(page.prev_link) %>">< 上一篇：<%= prev.title %></a>
+	<% } %>
+	<% if (next != undefined) { %>
+		<a href="<%- url_for(page.next_link) %>">下一篇: <%= next.title %> ></a>
+	<% } %>
+</div>

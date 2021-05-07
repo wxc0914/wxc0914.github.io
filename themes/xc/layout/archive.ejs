@@ -1,0 +1,15 @@
+<div>
+    <% let last_time %>
+    <% site.posts.sort('-date').each(function(post) { %>
+        <% cur_time = post.date.year() %>
+        <% if (last_time != cur_time) { %>
+            <% if (last_time != null) { %>
+                </ul>
+            <% } %>
+            <h3><%= post.date.year() %></h3>
+            <ul>
+            <% last_time = cur_time %>
+        <% } %>
+        <li><a href="<%- url_for(post.path) %>"><%= post.title %></a></li>
+    <% }) %>
+</div>

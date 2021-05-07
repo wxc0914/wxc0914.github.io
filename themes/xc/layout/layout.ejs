@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title><%= config.title %></title>
+	<meta name="keywords" content=""/>
+	<meta name="description" content=""/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1""/>
+	<% if (page.keywords !== undefined) { %>
+        <meta name="keywords" content="<%=page.keywords%>" />
+    <% } else if (theme.keywords !== undefined) { %>
+        <meta name="keywords" content="<%=theme.keywords%>" />
+    <% } %>
+	<% if (theme.stylesheets !== undefined && theme.stylesheets.length > 0) { %>
+		<% theme.stylesheets.forEach(function(path) { %>
+			<%- css(path) %>
+		<% }) %>
+	<% } %>
+</head>
+<body>
+	<header>
+		<nav>
+			<% Object.keys(theme.menu).forEach(function(key, num) { %>
+				<a href="<%= theme.menu[key] %>"><%= _p(key) %></a> 
+			<% }) %>
+		</div>
+	</header>
+	<main>
+		<%- body %>
+	</main>
+	<footer></footer>
+	<% if (theme.scripts !== undefined && theme.scripts.length > 0) { %>
+        <% theme.scripts.forEach(function(path) { %>
+            <%- js(path) %>
+        <% }); %>
+    <% } %>
+</body>
+</html>
