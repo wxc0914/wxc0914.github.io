@@ -31,6 +31,4 @@ gitment:
   owner: wxc0914
   repo: wxc0914.github.io
   client_id: ae41235d0a57566c82de
-  client_secret: f34454844f91f4688db6465de3fd8596296e8e52
-  cleanly: false //是否隐藏'Powered by Gitment'字样
-  language: zh-Hans
+  client_secret: a7b289897f5919fdcfa747ef84ed66bdf5be49ef
