@@ -28,7 +28,7 @@
 		<%- body %>
 	</main>
 	<footer>
-		<div id="gitment"></div>
+		<div id="gitalk-container"></div>
 	</footer>
 	<% if (theme.scripts !== undefined && theme.scripts.length > 0) { %>
         <% theme.scripts.forEach(function(path) { %>
@@ -37,15 +37,16 @@
     <% } %>
 	<% if (is_home() || is_post() || is_page()) { %>
         <script>
-            var gitment = new Gitment({
-                owner: "<%=theme.gitment.owner%>",
-                repo: "<%=theme.gitment.repo%>",
-                oauth: {
-                    client_id: "<%=theme.gitment.client_id%>",
-                    client_secret: "<%=theme.gitment.client_secret%>"
-                }
-            });
-            gitment.render("gitment");
+			gitalk = new Gitalk({
+				clientID: '<%=theme.gitalk.client_id%>',
+				clientSecret: '<%=theme.gitalk.client_secret%>',
+				repo: '<%=theme.gitalk.repo%>', 
+				owner: '<%=theme.gitalk.owner%>',
+				admin: ['<%=theme.gitalk.owner%>'],
+				id: location.pathname, 
+				distractionFreeMode: false
+			})
+			gitalk.render('gitalk-container')
         </script>
 	<% } %>
 </body>

@@ -38,7 +38,7 @@ html {
 body {
     font-family: -apple-system,system-ui,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif,BlinkMacSystemFont,"Helvetica Neue","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Arial;
     font-size: 14px;
-    width: 680px;
+    width: 660px;
     margin: 40px auto 0;
     background-color: #ffffff;
 }
@@ -214,62 +214,68 @@ pagination style
 article style
 */
 
-article div:first-child {
+article > div:first-child {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-article div:first-child img {
+article > div:first-child img {
     width: 40px;
     height: 40px;
     margin-right: 10px;
 }
 
-article div:first-child > div {
+article > div:first-child > div {
     flex-grow: 1;
 }
 
-article div:first-child > div {
+article > div:first-child > div {
     line-height: 1.6;
 }
 
-article div:first-child > div > div:first-child {
+article .author {
     font-family: "Segoe UI", serif;
     font-style: italic;
     font-weight: 600;
 }
 
-article div:first-child > div > div:last-child {
+article .time {
     color: #909090;
     font-size: 13px;
 }
 
+article .category, article .tag {
+    display: block;
+    text-align: right;
+}
+
+article .category a {
+    border-bottom: none;
+}
+
+article .tag a {
+    color: #909090;
+    font-size: 13px;
+    border-bottom: none;
+}
+
+article .tag a:hover {
+    color: #3eaf7c;
+}
+
+article .tag a::after {
+    content: ',';
+}
+
+article .tag a:last-child::after {
+    content: '';
+}
+
 /**
-gitment
+gitalk
 */
 
-#gitment a {
-    color: #3eaf7c;
-    border-bottom: 1px solid #3eaf7c;
-    line-height: 1.5;
-}
-
-#gitment a:hover {
-    text-decoration: none;
-}
-
-.gitment-editor-submit {
-    background-color: #3eaf7c !important;
-}
-.gitment-editor-avatar {
-    border-bottom: none !important;
-}
-
-#gitment nav {
-    padding: 0;
-}
-
-.gitment-editor-footer-tip, .gitment-footer-container {
-    display: none !important;
+#gitalk-container a {
+    border: none;
 }

@@ -1,4 +1,5 @@
 <div>
+    <p>目前共计篇<%= site.posts.length %>文章</p>
     <% let last_time %>
     <% site.posts.sort('-date').each(function(post) { %>
         <% cur_time = post.date.year() %>
