@@ -3,13 +3,9 @@
 <head>
 	<meta charset="utf-8">
 	<title><%= config.title %></title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1""/>
-	<% if (page.keywords !== undefined) { %>
-        <meta name="keywords" content="<%=page.keywords%>" />
-	<% } %>
-	<% if (page.description !== undefined) { %>
-        <meta name="keywords" content="<%=page.keywords%>" />
-	<% } %>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+	<meta name="description" content="<%=config.description%>" />
+	<meta name="keywords" content="<%=config.keywords%>" />
 	<% if (theme.stylesheets !== undefined && theme.stylesheets.length > 0) { %>
 		<% theme.stylesheets.forEach(function(path) { %>
 			<%- css(path) %>
