@@ -11,3 +11,14 @@ tags:
 
 > 时隔四年，重拾博客；心有所感，却难以言表。
 
+```java
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Hello World");
+    }
+}
+```
+
+```bash
+git commit -m 'update the articles'
+```
