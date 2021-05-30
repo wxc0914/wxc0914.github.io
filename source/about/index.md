@@ -5,7 +5,9 @@
 + emmmm，也可以去我的[GitHub](https://github.com/wxc0914)逛逛呀~~~
 
 ### 时间轴
-+ 2021年4月28日，完成博客整体框架的编写
+
++ 2021年4月15日，完成博客整体框架的编写
 
 ### 其他
+
 + 笔记本：[notion](https://wxc0914.github.io/notion/#/?id=notion)

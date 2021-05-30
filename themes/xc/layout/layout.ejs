@@ -33,7 +33,7 @@
             <%- js(path) %>
         <% }); %>
     <% } %>
-	<% if (is_home() || is_post() || is_page()) { %>
+	<% if (is_post() || is_current('/link')) { %>
         <script>
 			gitalk = new Gitalk({
 				clientID: '<%=theme.gitalk.client_id%>',
