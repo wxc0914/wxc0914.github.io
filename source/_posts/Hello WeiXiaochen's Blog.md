@@ -1,24 +1,13 @@
 ---
 title: Hello WeiXiaochen's Blog
-date: 2021-05-07 19:04:13
+date: 2021-05-30 14:51:13
 categories:
 - 生活杂记
 tags:
-- Hexo
-- JavaScript
-- 高兴
+- 生活琐事
+- 个人总结
 ---
 
 > 时隔四年，重拾博客；心有所感，却难以言表。
 
-```java
-public class Main {
-    public static void main(String[] args) {
-        System.out.println("Hello World");
-    }
-}
-```
-
-```bash
-git commit -m 'update the articles'
-```
+四月初开始重新用Hexo搭建博客，到最后编写完主题并且重新部署在GitHub上，差不多也就花了半个月时间。但是拖到今天才开始写下这第一篇文章。

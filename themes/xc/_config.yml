@@ -9,10 +9,10 @@ menu:
 keywords: 
 
 # 站点微缩图
-favicon: https://cdn.jsdelivr.net/gh/wxc0914/image/a3625c26bc8735174100f6d487763b06.png
+favicon: "https://github.githubassets.com/images/icons/emoji/unicode/1f34b.png"
 
-# 站点 Logo
-logo: https://cdn.jsdelivr.net/gh/wxc0914/image/a3625c26bc8735174100f6d487763b06.png
+# 博主头像
+avator: https://cdn.jsdelivr.net/gh/wxc0914/image/a3625c26bc8735174100f6d487763b06.png
 
 #css 样式表路径
 stylesheets:
@@ -26,9 +26,21 @@ scripts:
 - https://cdn.bootcdn.net/ajax/libs/instantclick/3.1.0/instantclick.min.js
 - /js/xc.js
 
-#gitalk
+#gitalk 相关配置
 gitalk:
   owner: wxc0914
   repo: wxc0914.github.io
   client_id: ae41235d0a57566c82de
   client_secret: a7b289897f5919fdcfa747ef84ed66bdf5be49ef
+
+feed:
+  type: atom
+  path: atom.xml
+  limit: 0
+  hub:
+  content: true
+  content_limit:
+  content_limit_delim: ' '
+
+sitemap:
+  path: sitemap.xml
