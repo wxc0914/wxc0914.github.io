@@ -57,7 +57,7 @@ img {
     max-width: 100%;
 }
 
-footer span {
+footer .info {
     font-size: 13px;
     color: #909090;
 }
