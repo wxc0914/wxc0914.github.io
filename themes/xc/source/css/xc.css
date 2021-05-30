@@ -57,6 +57,11 @@ img {
     max-width: 100%;
 }
 
+footer span {
+    font-size: 13px;
+    color: #909090;
+}
+
 /**
 nav style
 */
@@ -278,7 +283,6 @@ article img {
 /**
 gitalk
 */
-
 #gitalk-container a {
     border: none;
 }
