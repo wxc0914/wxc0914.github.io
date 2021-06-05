@@ -46,9 +46,9 @@
 
 <div class="pagination">
 	<% if (prev != undefined ) { %>
-		<a href="<%- url_for(page.prev_link) %>">< 上一篇：<%= prev.title %></a>
+		<a href="<%- url_for(page.prev_link) %>">< 上一篇：<%= truncate(prev.title, 10) %></a>
 	<% } %>
 	<% if (next != undefined) { %>
-		<a href="<%- url_for(page.next_link) %>">下一篇: <%= next.title %> ></a>
+		<a href="<%- url_for(page.next_link) %>">下一篇: <%= truncate(next.title, 10) %> ></a>
 	<% } %>
 </div>

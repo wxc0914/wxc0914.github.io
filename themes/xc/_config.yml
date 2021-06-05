@@ -5,9 +5,6 @@ menu:
   About: /about
   Link: /link
 
-# 关键字
-keywords: 
-
 # 站点微缩图
 favicon: "https://github.githubassets.com/images/icons/emoji/unicode/1f34b.png"
 
@@ -22,6 +19,7 @@ stylesheets:
 
 #javascript 脚本路径
 scripts:
+- https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js
 - https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js
 - https://cdn.bootcdn.net/ajax/libs/instantclick/3.1.0/instantclick.min.js
 - /js/xc.js
@@ -33,6 +31,7 @@ gitalk:
   client_id: ae41235d0a57566c82de
   client_secret: a7b289897f5919fdcfa747ef84ed66bdf5be49ef
 
+#seo相关
 feed:
   type: atom
   path: atom.xml
