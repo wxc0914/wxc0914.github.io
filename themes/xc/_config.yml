@@ -31,29 +31,6 @@ gitalk:
   client_id: ae41235d0a57566c82de
   client_secret: a7b289897f5919fdcfa747ef84ed66bdf5be49ef
 
-#搜索相关
-jsonContent:
-  meta:             false
-  keywords:         false
-  dateFormat:       'YYYY年MM月DD日'
-  pages:            false
-  posts:
-    title:          true
-    slug:           false
-    date:           true
-    updated:        false
-    comments:       false
-    path:           true
-    link:           false
-    permalink:      false
-    excerpt:        false
-    keywords:       false
-    text:           true
-    raw:            false
-    content:        false
-    categories:     true
-    tags:           true
-
 #seo相关
 feed:
   type: atom

@@ -22,15 +22,6 @@ table {
     table-layout: auto;
 }
 
-input {
-    padding: 0;
-    border: 0;
-    background-color: #fff;
-    outline: none;
-    font-family: -apple-system,system-ui,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif,BlinkMacSystemFont,"Helvetica Neue","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Arial;
-    font-size: 13.5px;
-}
-
 /**
 global style
 */
@@ -83,6 +74,7 @@ header {
 
 nav {
     padding-left: 14px;
+    padding-right: 14px;
 }
 
 nav a {
@@ -96,22 +88,6 @@ nav a {
 
 nav a:last-child {
     border: none;
-}
-
-#search {
-    padding-right: 24px;
-}
-
-.search-input {
-    padding-left: 2px;
-    padding-right: 2px;
-    border-bottom: 2px solid #3eaf7c;
-}
-
-.search-button{
-    width: 15px;
-    cursor: pointer;
-    vertical-align: bottom;
 }
 
 
@@ -319,9 +295,5 @@ mobile style
     body {
         width: 100%;
         margin: 0 auto;
-    }
-
-    #search {
-        display: none;
     }
 } 
