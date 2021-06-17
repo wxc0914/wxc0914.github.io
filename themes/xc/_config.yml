@@ -11,6 +11,9 @@ favicon: "https://github.githubassets.com/images/icons/emoji/unicode/1f34b.png"
 # 博主头像
 avator: https://cdn.jsdelivr.net/gh/wxc0914/image/a3625c26bc8735174100f6d487763b06.png
 
+# ICP备案号
+icp: 蜀ICP备2021014778号-1
+
 #css 样式表路径
 stylesheets:
 - https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css
