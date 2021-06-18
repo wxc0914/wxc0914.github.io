@@ -8,8 +8,8 @@
 
 + 2021年4月15日，完成博客整体框架的编写。
 
-+ 2021年6月16日，完成weixiaochen.cn域名备案。
++ 2021年6月16日，完成[weixiaochen.cn](https://blog.weixiaochen.cn/)域名备案。
 
 ### 其他
 
-+ 笔记本：[notion](https://wxc0914.github.io/notion/#/?id=notion)
++ [笔记本](https://blog.weixiaochen.cn/notion/)：学习的小本本，你也有吧！
