@@ -277,11 +277,13 @@ gitalk
 }
 
 @media(min-width: 1600px) {
+
     html {
-        font-size: 18px;
+        font-size: 1rem;
     }
+
     body {
-        width: 780px;
+        width: 45rem;
     }
 }
 
