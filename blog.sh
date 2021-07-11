@@ -3,7 +3,7 @@ git add .
 git commit -m 'update the theme'
 git push
 
-hexo clean
-hexo g
-gulp
-hexo d
+npx hexo clean
+npx hexo g
+npx gulp
+npx hexo d
