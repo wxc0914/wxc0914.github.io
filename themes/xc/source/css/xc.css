@@ -38,19 +38,19 @@ html {
 }
 
 body {
-    width: 640px;
-    margin: 2.857rem auto 0;
+    width: 680px;
+    margin: 40px auto 0;
     background-color: #ffffff;
 }
 
 header, main, footer {
-    padding-top: 1.1428rem;
-    padding-bottom: 1.1428rem;
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 
 main > *, footer > * {
-    padding-left: 1.7142rem;
-    padding-right: 1.7142rem;
+    padding-left: 24px;
+    padding-right: 24px;
 }
 
 img {
@@ -58,7 +58,7 @@ img {
 }
 
 footer .info {
-    font-size: 0.9285rem;
+    font-size: 13px;
     color: #909090;
 }
 
@@ -69,19 +69,19 @@ header {
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid hsla(0,0%,59.2%,.1);
-    padding-bottom: 0.8571rem;
+    padding-bottom: 12px;
 }
 
 nav {
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: 12px;
+    padding-right: 12px;
 }
 
 nav a {
     border-right: 1px solid hsla(0,0%,59.2%,.2);
     display: inline-block;
-    width: 4rem;
-    font-size: 1rem;
+    width: 64px;
+    font-size: 14px;
     text-align: center;
     border-bottom: none;
 }
@@ -96,34 +96,34 @@ nav a:last-child {
 */
 
 h1, h2, h3, h4, h5, h6 {
-    margin-top: 2.5rem;
-    margin-bottom: 0.714rem;
+    margin-top: 35px;
+    margin-bottom: 10px;
 }
 
 h1 {
-    font-size: 1.7142rem;
+    font-size: 24px;
 }
 
 h2:before, h3:before, h4:before, h5:before, h6:before {
     content: "#";
     display: inline-block;
     color: #3eaf7c;
-    padding-right: 0.5714rem;
+    padding-right: 8px;
 }
 
 h2 {
-    padding-bottom: 0.8571rem;
-    font-size: 1.4285rem;
+    padding-bottom: 12px;
+    font-size: 20px;
     border-bottom: 1px solid #ececec;
 }
 
 h3 {
-    font-size: 1.1428rem;
+    font-size: 16px;
     padding-bottom: 0;
 }
 
 p {
-    margin: 1.5714rem 0;
+    margin: 22px 0;
     line-height: 1.6;
     letter-spacing: 1px;
 }
@@ -135,9 +135,9 @@ a {
 
 blockquote {
     color: #666;
-    padding: 1px 1.5714rem;
-    margin: 1.5714rem 0;
-    border-left: 0.2857rem solid #42b983;
+    padding: 1px 22px;
+    margin: 22px 0;
+    border-left: 4px solid #42b983;
     background-color: rgba(66,184,131,.1);
 }
 
@@ -147,26 +147,26 @@ strong {
 
 ul, ol {
     margin: 0;
-    padding: 0 0 0 2rem;
+    padding: 0 0 0 28px;
 }
 
 ul li, ol li {
-    padding-left: 0.4285rem;
-    margin: 1.1428rem 0;
+    padding-left: 6px;
+    margin: 16px 0;
     line-height: 1.6;
     letter-spacing: 1px;
 }
 
 table {
     width: 100%;
-    margin: 1.5714rem 0;
+    margin: 22px 0;
     line-height: 1.6;
     text-align: left;
     border: 1px solid #ececec;
 }
 
 td, th {
-    padding: 0.5714rem 0.4285rem;
+    padding: 8px 6px;
     border-bottom: 1px solid #ececec;
     border-right: 1px solid #ececec;
 }
@@ -185,12 +185,12 @@ pagination style
 .pagination {
     display: flex;
     justify-content: space-between;
-    padding: 1.1428rem 1.7142rem 0 1.7142rem;
+    padding: 16px 24px 24px;
     border-top: 1px solid hsla(0,0%,59.2%,.1);
 }
 
 .katex {
-    font-size: 1em;
+    font-size: 1rem;
     text-indent: 0;
     text-rendering: auto;
 }
@@ -200,7 +200,7 @@ pagination style
 }
 
 .shadow {
-    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 5%);
+    box-shadow: 1px 1.75px 0 rgb(0 0 0 / 5%);
 }
 
 /**
@@ -214,9 +214,9 @@ article > div:first-child {
 }
 
 article > div:first-child img {
-    width: 2.8571rem;
-    height: 2.8571rem;
-    margin-right: 0.7142rem;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
 }
 
 article > div:first-child > div {
@@ -228,17 +228,15 @@ article > div:first-child > div {
 }
 
 article .author {
-    font-family: "Segoe UI", serif;
-    font-style: italic;
     font-weight: 600;
 }
 
 article .time {
     color: #909090;
-    font-size: 0.9285rem;
+    font-size: 13px;
 }
 
-article .category, article .tag {
+article .category, article .tags {
     display: block;
     text-align: right;
 }
@@ -247,26 +245,40 @@ article .category a {
     border-bottom: none;
 }
 
-article .tag a {
+article .tags a {
     color: #909090;
-    font-size: 0.9285rem;
+    font-size: 13px;
     border-bottom: none;
 }
 
-article .tag a:hover {
+article .tags a:hover {
     color: #3eaf7c;
 }
 
-article .tag a::after {
+article .tags a::after {
     content: ',';
 }
 
-article .tag a:last-child::after {
+article .tags a:last-child::after {
     content: '';
 }
 
 article img {
-    border-radius: 5px;
+    border-radius: 4px;
+}
+
+article .video-container {
+    margin: auto;
+    width: 100%;
+    height: 350px;
+    
+}
+
+article .video-container > iframe {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    border-radius: 4px;
 }
 
 /**
@@ -276,20 +288,13 @@ gitalk
     border: none;
 }
 
-@media(min-width: 1600px) {
-
-    html {
-        font-size: 1rem;
-    }
-
-    body {
-        width: 45rem;
-    }
-}
-
-@media (max-width: 768px) {
+@media (max-width: 672px) {
     body {
         width: 100%;
         margin: 0 auto;
+    }
+
+    article .video-container {
+        height: 200px;
     }
 } 
