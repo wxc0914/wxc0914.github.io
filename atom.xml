@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>WeiXiaochen&#39;s Blog</title>
+  
+  
+  <link href="https://blog.weixiaochen.cn/atom.xml" rel="self"/>
+  
+  <link href="https://blog.weixiaochen.cn/"/>
+  <updated>2021-07-04T10:43:33.018Z</updated>
+  <id>https://blog.weixiaochen.cn/</id>
+  
+  <author>
+    <name>WeiXiaochen</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hello WeiXiaochen&#39;s Blog</title>
+    <link href="https://blog.weixiaochen.cn/2021/05/30/Hello%20WeiXiaochen&#39;s%20Blog/"/>
+    <id>https://blog.weixiaochen.cn/2021/05/30/Hello%20WeiXiaochen&#39;s%20Blog/</id>
+    <published>2021-05-30T06:51:13.000Z</published>
+    <updated>2021-07-04T10:43:33.018Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>时隔四年，重拾博客；心有所感，却难以言表。</p></blockquote><h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>四月初开始用<a href="https://hexo.io/zh-cn/">Hexo</a>重新搭建博客，编写完整个<a href="https://github.com/wxc0914/wxc0914.github.io">主题</a>并且部署在<a href="https://github.com/wxc0914">GitHub</a>上，也就花了差不多半个月的时间。但是这第一篇文章，却一直拖到了今天。</p><p>主要是这两个月都处于找工作的焦虑之中，难以静下心来，去写下一篇文章。</p><h2 id="大学四年"><a href="#大学四年" class="headerlink" title="大学四年"></a>大学四年</h2><p>我也不知道该怎么去给这篇文章开头，因为想说的东西很多。</p><p>先说学校吧，普通本科，一所双非院校，专业是自己喜欢的计算机相关专业。</p><p>学校所处的位置比较偏僻，所以平时的休闲时间基本上是在寝室渡过。这样也好，留给了我更多写代码的时间。四年下来，数一数自己捣鼓过的东西，虽然不是很厉害，但是种类确实是蛮多的。</p><ul><li>从第一个Hell World，到用C语言完成飞机大战、愤怒的小鸟等小游戏</li><li>从第一对HTML标签，到用ThinkPHP、SSM、Hexo写下自己一个又一个博客网站</li><li>从第一次New Object()，到写下一个完整的Android APP</li><li>从不知道电烙铁是什么东西，到用树莓派完成自己的智能小车</li><li>从不会安装Windows系统，到后来直接将Ubuntu作为生成环境</li><li>从不知道什么叫爬虫，到用Python爬虫赚下我大学的第一桶金。</li></ul><p>这些东西，基本上算是我大学快乐的源泉。</p><p>参加的社团不多，唯一的社团还是和编程相关的，所以基本上很少有娱乐活动。但是周末的话，还是会和朋友周末出去吃吃饭，每周点点不一样的菜品，尝尝鲜。喝点小酒，吃点小烧烤，还是挺享受的。</p><p>学校离海边很近，所以晚霞很好看，平时累了，就会看看窗外。冬天的话，习惯到室外走走，喜欢寒风打在脸上的刺痛，享受脚踩在雪地上发出的声音。</p><p><img src="https://cdn.jsdelivr.net/gh/wxc0914/image/e55f3ceca52e432bbd6ab04928c218dd.png" alt="学校"></p><p>参加过比赛，拿过奖，有过公费旅游。也逃过课，甚至挂过别人很少挂的科目——体育。所以，大学该体验的，我基本上都体验了。</p><p>从满怀憧憬踏入大学校园，到最后连一场完整的毕业典礼都没有，就草草离开，真的就是连一句再见都来不及说。总的来说，四年生活还算充实，要问有没有遗憾？自然是有的。</p><h2 id="毕业后在家的一年"><a href="#毕业后在家的一年" class="headerlink" title="毕业后在家的一年"></a>毕业后在家的一年</h2><p>大四下学期，考研失败，分析原因，觉得是自己太过浮躁。所以计划先去找一家公司实习，好好冷静下，七月份再开始着手二战。可是，回家的火车还没到站，就收到了疫情传遍全国的消息。无奈只能待在家里，一边磨蹭毕业设计，一边虚度时光。</p><p><img src="https://cdn.jsdelivr.net/gh/wxc0914/image/9d57286adddcfbfe3199af447621eac4.png" alt="学习"></p><p>刚回家那会儿还好，每天还保持着学习状态，毕业设计也已经开题。但到了四五月份，就沉迷游戏无法自拔，每天睡到12点。毕业设计自然也就被丢到了一旁。直到六月初，学校开始催了，才赶紧继续那未完成的毕业设计。</p><p>做完毕业设计，感觉自己一下子就没啥事了，想着先放松一个月，调整下状态，七月份全身心二战。可就这样一拖再拖，直到考研结束，都还没有认认真真复习过一天。中途甚至因为考研报名没交上费，打了好几个电话求助。</p><p>二战失败，没有退路，只能选择找工作。</p><p>年还没过完，家里就在催，赶紧出去找活。于是从大年初三开始，就抱着Java面试资料开始背。</p><p>一直到三月底，都处于闭关复习状态，之前没有很认真用过Java写项目，学校教的也不能够适应面试，无奈又从头开始学习Spring、SpringMVC、Mybatis这些框架。</p><p>四月初开始投递简历，因为20届属于往届生了，能够投递的岗位很少，所以碰见能投的，不能投的基本上都投了。好在一番折腾，终于找到了还算可以的一家。</p><h2 id="现如今"><a href="#现如今" class="headerlink" title="现如今"></a>现如今</h2><p>2021年5月24日早上8:30，这是我第一天上班的日子，也是计算我工龄第起始日期。应该还是比较有纪念意义吧，所以记录一下。这也是为什么我会在这周末写下这篇文章。</p><p>先来一张工作环境的照片，这是中午下班，同事都离开后，我站在自己工位上拍的。</p><p><img src="https://cdn.jsdelivr.net/gh/wxc0914/image/20fd039c3c7369bd03e03dd17f0c8d75.png" alt="工作"></p><p>我是早上8:40左右到公司报到的。上午，管理新人入职的HR给我发了工牌，讲解了新人入职要点。下午，室经理和导师给我开了一个会，讲了一下部门的具体业务。</p><p>除了吃饭时间，我基本上都在工位上待着。公司食堂的饭，我觉得还挺好吃的。怎么说呢，有点回到高中的感觉，因为时间确实挺挤的。除了第一天没有加班，后面几天我都是晚上8:30以后走的，回到家洗完澡，基本就快12点了，第二天7点就要起床赶往公司。</p><p>第一次加班回家，看到路灯、以及周围大楼的灯亮着。不知怎么回事，忽然有一种不一样的感觉。</p><p><img src="https://cdn.jsdelivr.net/gh/wxc0914/image/ee9e67c82b69bd78a1158d68ec19be4c.png" alt="加班"></p><p>一下子从一个学生转变为一个社会工作人员，与大自己好几岁，甚至十几岁的同事打交道，我还是有诸多不适应。自己不会的东西还有很多，希望自己能够尽量在短时间内完成这种转变吧。</p><h2 id="关于博客"><a href="#关于博客" class="headerlink" title="关于博客"></a>关于博客</h2><p>本来文章标题是关于Blog的，但自己不知不觉就扯到了过往。</p><p>关于博客，我折腾过Emblog、wordpress、Hexo以及自己手撸的博客，但最后用下来，还是Hexo比较方便（主要是存储方式、写作模式比较适合自己）。</p><p>关于文章数量，我不求多，但还是希望每周能够出两篇以上内容质量高、读起来比较有意思的文章吧。</p><p>关于主题，是参考了网上很多网站的元素，拼凑起来的。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;时隔四年，重拾博客；心有所感，却难以言表。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h2&gt;&lt;p&gt;四月初开始用</summary>
+      
+    
+    
+    
+    <category term="生活杂记" scheme="https://blog.weixiaochen.cn/categories/%E7%94%9F%E6%B4%BB%E6%9D%82%E8%AE%B0/"/>
+    
+    
+    <category term="生活琐事" scheme="https://blog.weixiaochen.cn/tags/%E7%94%9F%E6%B4%BB%E7%90%90%E4%BA%8B/"/>
+    
+    <category term="个人总结" scheme="https://blog.weixiaochen.cn/tags/%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/"/>
+    
+  </entry>
+  
+</feed>
